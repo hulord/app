@@ -152,7 +152,9 @@ module.exports = {
             include: paths.appSrc,
             loader: require.resolve('babel-loader'),
             options: {
-              
+              plugins: [
+                ['import', [{ libraryName: "antd", style: true }]],  // 加载 less 文件
+              ],
               // This is a feature of `babel-loader` for webpack (not Babel itself).
               // It enables caching results in ./node_modules/.cache/babel-loader/
               // directory for faster rebuilds.
@@ -196,6 +198,25 @@ module.exports = {
               },
             ],
           },
+          //TODO @Lynn 这里我开启自己编写的less文件的css modules功能 除了node_modules库中的less
+          {
+            test: /\.less$/,
+            exclude: [/node_modules/],
+            // loader:"style-loader!css-loader?modules&localIdentName=[name]__[local]___[hash:base64:5]!less-loader",
+            use: [
+                require.resolve('style-loader'),
+                {
+                    loader: require.resolve('css-loader'),
+                    options: {
+                        modules: true,
+                        localIndexName: "[name]__[local]-[hash:base64:5]"
+                    },
+                },
+                {
+                    loader: require.resolve('less-loader'), // compiles Less to CSS
+                },
+            ],
+        },
           // "file" loader makes sure those assets get served by WebpackDevServer.
           // When you `import` an asset, you get its (virtual) filename.
           // In production, they would get copied to the `build` folder.
