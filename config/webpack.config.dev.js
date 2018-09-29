@@ -53,12 +53,12 @@ module.exports = {
       // initialization, it doesn't blow up the WebpackDevServer client, and
       // changing JS code would still trigger a refresh.
     ],
-    admin:[
-      require.resolve('react-dev-utils/webpackHotDevClient'),
-      require.resolve('./polyfills'),
-      require.resolve('react-error-overlay'),
-      paths.appSrc + "/admin.js",
-    ]
+    // admin:[
+    //   require.resolve('react-dev-utils/webpackHotDevClient'),
+    //   require.resolve('./polyfills'),
+    //   require.resolve('react-error-overlay'),
+    //   paths.appSrc + "/admin.js",
+    // ]
   },
   output: {
     // Add /* filename */ comments to generated require()s in the output.
@@ -251,12 +251,12 @@ module.exports = {
       chunks: ["index"],
       template: paths.appHtml,
     }),
-    new HtmlWebpackPlugin({
-      inject: true,
-      chunks: ["admin"],
-      template: paths.appHtml,
-      filename: 'admin.html',
-    }),
+    // new HtmlWebpackPlugin({
+    //   inject: true,
+    //   chunks: ["admin"],
+    //   template: paths.appHtml,
+    //   filename: 'admin.html',
+    // }),
     // Add module names to factory functions so they appear in browser profiler.
     new webpack.NamedModulesPlugin(),
     // Makes some environment variables available to the JS code, for example:
