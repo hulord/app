@@ -1,0 +1,29 @@
+@import '../../index.less';
+ 
+.LBodyOuter{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    .LHeader{
+        height:50px;
+        width:100vw;
+        background:@bg-color01;
+        flex-shrink:0;
+    }
+    .LBody{
+        flex-grow: 1;
+        width:100vw;
+        display:flex;
+        flex-direction:row;
+        .LTree{
+            width:200px;
+            background:@bg-color02;
+            flex-shrink:0;
+            overflow:auto;
+        }
+        .LContent{
+            flex-grow:1;
+            overflow:auto;
+        }
+    }
+}

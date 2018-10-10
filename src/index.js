@@ -8,7 +8,7 @@
 // ReactDOM.render(<App />, document.getElementById('root'));
 // registerServiceWorker();
 import dva from 'dva';
-import './index/index.css'; 
+import './index/index.less'; 
 import createHistory from 'history/createBrowserHistory'
  
 // 1. Initialize
