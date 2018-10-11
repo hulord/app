@@ -6,7 +6,7 @@ import classnames from 'classnames';
 import styles from './layout.less';
  
 const Layout=({ children,dispatch,menu,locationPathname })=>{
- 
+  /**这里是对应的ui部分 */
   const menuList=menu.getIn(['byId']).toList();
   let menuName='';
   menuList.map(item=>{
@@ -35,43 +35,6 @@ const Layout=({ children,dispatch,menu,locationPathname })=>{
           </div>
           <div className={classnames(styles.LBody)}>
             <div className={classnames(styles.LTree)}>
-              <p>哈哈哈哈</p>
-              <p>哈哈哈哈</p>
-              <p>哈哈哈哈</p>
-              <p>哈哈哈哈</p>
-              <p>哈哈哈哈</p>
-              <p>哈哈哈哈</p>
-              <p>哈哈哈哈</p>
-              <p>哈哈哈哈</p>
-              <p>哈哈哈哈</p>
-              <p>哈哈哈哈</p>
-              <p>哈哈哈哈</p>
-              <p>哈哈哈哈</p>
-              <p>哈哈哈哈</p>
-              <p>哈哈哈哈</p>
-              <p>哈哈哈哈</p>
-              <p>哈哈哈哈</p>
-              <p>哈哈哈哈</p>
-              <p>哈哈哈哈</p>
-              <p>哈哈哈哈</p>
-              <p>哈哈哈哈</p>
-              <p>哈哈哈哈</p>
-              <p>哈哈哈哈</p>
-              <p>哈哈哈哈</p>
-              <p>哈哈哈哈</p>
-              <p>哈哈哈哈</p>
-              <p>哈哈哈哈</p>
-              <p>哈哈哈哈</p>
-              <p>哈哈哈哈</p>
-              <p>哈哈哈哈</p>
-              <p>哈哈哈哈</p>
-              <p>哈哈哈哈</p>
-              <p>哈哈哈哈</p>
-              <p>哈哈哈哈</p>
-              <p>哈哈哈哈</p>
-              <p>哈哈哈哈</p>
-              <p>哈哈哈哈</p>
-              <p>哈哈哈哈</p>
               <p>哈哈哈哈</p>
             </div>
             <div className={classnames(styles.LContent)}>

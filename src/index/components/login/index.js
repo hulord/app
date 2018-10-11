@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from 'dva'
-import {injectIntl} from 'react-intl'
 import {Row, Col, Form, Icon, Input, Button} from 'antd'
 import classnames from 'classnames';
 import styles from './index.less';
@@ -60,8 +59,8 @@ class Login extends Component{
 }
  
 export default connect(({
- 
+    app
 })=>({
  
-}))(injectIntl(Form.create()(Login))
+}))(Form.create()(Login)
 )

@@ -1,9 +1,9 @@
 const menuGlobal=[
     {
         id:'login',
-        pid:'0',
+        pid:'1',
         name:'登录',
-        icon:'user',
+        icon:'login',
         path: '/login',
         component: () => import('../index/components/login'),
     }, 
