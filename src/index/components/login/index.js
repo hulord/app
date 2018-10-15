@@ -5,16 +5,18 @@ import classnames from 'classnames';
 import styles from './index.less';
  
 const FormItem = Form.Item
- 
+
+
 class Login extends Component{
- 
+
     loginSubmit=(e)=>{
         e.preventDefault();
         const {form} = this.props;
         form.validateFields((err, values) => {
-            if (!err) {
-              console.log(values);
-            }
+            // if (!err) {
+            //   console.log(values);
+            // }
+            this.props.dispatch({type:'/'})
         });
     }
  

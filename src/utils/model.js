@@ -10,7 +10,7 @@ const initState = Map({
  
 export default {
  
-    namespace: 'model',
+    namespace: 'app',
   
     state:initState,
   
@@ -27,7 +27,7 @@ export default {
         },
         
     },
-  
+    //执行的方法
     reducers: {
         updateLang (state,{payload:{value}}) {
             return state.set('i18n',value);

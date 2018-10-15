@@ -1,56 +1,54 @@
-import {connect} from 'dva';
-import React from 'react';
-import pathToRegexp from 'path-to-regexp'
-import Helmet from 'react-helmet';
-import classnames from 'classnames';
-import styles from './layout.less';
- 
-const Layout=({ children,dispatch,menu,locationPathname })=>{
-  /**这里是对应的ui部分 */
-  const menuList=menu.getIn(['byId']).toList();
-  let menuName='';
-  menuList.map(item=>{
-    if(pathToRegexp(item.get('path')).exec(locationPathname)){
-      menuName = item.get('name');
+import { Layout, Menu, Breadcrumb } from 'antd';
+import React, { Component } from 'react';
+import 'antd/dist/antd.css';
+
+import './layout.less'
+const { Header, Content, Footer } = Layout;
+
+class SiderDemo extends Component {
+    state = {
+        collapsed: false,
+        mode: 'inline',
+    };
+
+    toggle = () => {
+        this.setState({
+            collapsed: !this.state.collapsed,
+        });
     }
-  });
- 
-  //判断是否是登录页，登录页面和内页是不同的布局
-  const loginUrl=menu.getIn(['byId','login','path']);
-  const isLoginPage=pathToRegexp(loginUrl).exec(locationPathname)?true:false;
- 
-  return (
-    <React.Fragment>
-      <Helmet>
-        <title>
-          {menuName}
-        </title>
-      </Helmet>
-      {isLoginPage?
-        children
-      :
-        <div className={classnames(styles.LBodyOuter)}>
-          <div className={classnames(styles.LHeader)}>
-            logo
-          </div>
-          <div className={classnames(styles.LBody)}>
-            <div className={classnames(styles.LTree)}>
-              <p>哈哈哈哈</p>
+
+    render() {
+        return (
+          <Layout className="MyLayout">
+          <Header  style={{ height:'70px',background:"white",position: 'fixed', zIndex: 1, width: '100%' }}>
+            <div className="logo" >
+           
             </div>
-            <div className={classnames(styles.LContent)}>
-              {children}
-            </div>
-          </div>
-        </div>
-      }
-      
-    </React.Fragment>
-  );
+            <Menu
+              theme="white" 
+              mode="horizontal"
+              defaultSelectedKeys={['2']}
+              style={{ lineHeight: '70px' }}
+            >
+              <Menu.Item key="1">首页</Menu.Item>
+              <Menu.Item key="2">图片</Menu.Item>
+              <Menu.Item key="3">文章</Menu.Item>
+            </Menu>
+          </Header>
+          <Content style={{ padding: '0 50px', marginTop: 64 }}>
+            <Breadcrumb style={{ margin: '16px 0' }}>
+              <Breadcrumb.Item>Home</Breadcrumb.Item>
+              <Breadcrumb.Item>List</Breadcrumb.Item>
+              <Breadcrumb.Item>App</Breadcrumb.Item>
+            </Breadcrumb>
+            <div style={{ background: '#fff', padding: 24, minHeight: 380 }}>Content</div>
+          </Content>
+          <Footer style={{ textAlign: 'center' }}>
+            Ant Design ©2018 Created by Ant UED
+          </Footer>
+        </Layout>
+        );
+    }
 }
- 
-export default connect(({
-  app
-})=>({
-  menu:app.get('menu'),
-  locationPathname:app.get('locationPathname'),
-}))(Layout)
+
+export default SiderDemo;

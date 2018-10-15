@@ -14,6 +14,14 @@ const menuGlobal=[
         icon:'user',
         path: '/',
         component: () => import('../index/components/layout/Header'),
+    },
+    {
+        id:'layout',
+        pid:'2',
+        name:'布局文件',
+        icon:'layout',
+        path: '/layout',
+        component: () => import('../index/components/layout/Layout'),
     }
   ];
   
