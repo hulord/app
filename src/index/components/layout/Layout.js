@@ -1,29 +1,36 @@
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout, Menu, Row, Col} from 'antd';
 import React, { Component } from 'react';
 import 'antd/dist/antd.css';
+import './layout.less';
 
-import './layout.less'
+
+import ImgCalendar from "../calendar/calendar.js"
 const { Header, Content, Footer } = Layout;
+
 
 class SiderDemo extends Component {
     state = {
         collapsed: false,
         mode: 'inline',
-    };
-
+        defaultProps:{
+          open:false
+        }
+    };    
     toggle = () => {
         this.setState({
             collapsed: !this.state.collapsed,
         });
     }
+    onPanelChange=(value, mode) =>{
+      console.log(value, mode);
+    }
 
     render() {
         return (
           <Layout className="MyLayout">
-          <Header  style={{ height:'70px',background:"white",position: 'fixed', zIndex: 1, width: '100%' }}>
+          <Header  style={{ height:'72px',background:"white",position: 'fixed', zIndex: 1, width: '100%' }}>
             <div className="logo" >
-           
-            </div>
+            </div> 
             <Menu
               theme="white" 
               mode="horizontal"
@@ -35,13 +42,12 @@ class SiderDemo extends Component {
               <Menu.Item key="3">文章</Menu.Item>
             </Menu>
           </Header>
-          <Content style={{ padding: '0 50px', marginTop: 64 }}>
-            <Breadcrumb style={{ margin: '16px 0' }}>
-              <Breadcrumb.Item>Home</Breadcrumb.Item>
-              <Breadcrumb.Item>List</Breadcrumb.Item>
-              <Breadcrumb.Item>App</Breadcrumb.Item>
-            </Breadcrumb>
-            <div style={{ background: '#fff', padding: 24, minHeight: 380 }}>Content</div>
+          <Content style={{marginTop: 64 }}>
+                <Row>
+                <Col span={12}  >
+                <ImgCalendar />
+                </Col>
+              </Row>
           </Content>
           <Footer style={{ textAlign: 'center' }}>
             Ant Design ©2018 Created by Ant UED

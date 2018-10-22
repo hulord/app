@@ -22,6 +22,14 @@ const menuGlobal=[
         icon:'layout',
         path: '/layout',
         component: () => import('../index/components/layout/Layout'),
+    },
+    {
+        id:'calendar',
+        pid:'3',
+        name:'日历组件',
+        icon:'calendar',
+        path: '/calendar',
+        component: () => import('../index/components/calendar/calendar.js'),
     }
   ];
   
