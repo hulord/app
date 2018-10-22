@@ -30,7 +30,16 @@ const menuGlobal=[
         icon:'calendar',
         path: '/calendar',
         component: () => import('../index/components/calendar/calendar.js'),
+    },
+    {
+        id:'imgcalendar',
+        pid:'4',
+        name:'自定义日历组件',
+        icon:'imgcalendar',
+        path: '/imgcalendar',
+        component: () => import('../index/components/imgcalendar/imgcalendar.js'),
     }
+
   ];
   
 export default {

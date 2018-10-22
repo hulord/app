@@ -44,9 +44,17 @@ class SiderDemo extends Component {
           </Header>
           <Content style={{marginTop: 64 }}>
                 <Row>
-                <Col span={12}  >
+                <Col span={10}>
                 <ImgCalendar />
                 </Col>
+                <Col span={10}>
+                <ImgCalendar />
+                </Col>
+
+                <Col span={2}>
+                <ImgCalendar />
+                </Col>
+
               </Row>
           </Content>
           <Footer style={{ textAlign: 'center' }}>

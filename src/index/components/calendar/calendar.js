@@ -73,6 +73,6 @@ class ImgCalendar extends React.Component {
                 monthCellRender={monthCellRender} 
                 mode="day"
                 validRange={[moment("2018-10-01", "YYYY-MM-DD"),moment("2018-10-11", "YYYY-MM-DD")]}/>
-        )}0
+        )}
 }
 export default ImgCalendar;
