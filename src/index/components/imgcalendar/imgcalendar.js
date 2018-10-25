@@ -4,6 +4,7 @@ import {Col,Row} from 'antd';
 import 'moment/locale/zh-cn';
 import "./imgcalendar.less";
 import "../../index.less";
+import img from "../../../asset/img/imgwell.png";
 moment.locale('zh-cn');
 /**
  * 自定义日历组建
@@ -30,17 +31,17 @@ class ImgCalendar extends React.Component {
     }
     ArrayData.sort(function(a,b){return a-b;})
     return (
-      <ul className="wells">
+      <Col span={24} className="wells">
         <Col span={6}>back</Col>
         {
           ArrayData.map(item => (  
-            <Col span={6} key={item}>
-            {item}
+            <Col className="Position_R" style={{height:"300px",backgroundImage:`url(${img})`,backgroundSize:"100% 100%"}} span={6} key={item}>
+              <div className="ShadeWell">{item}</div>
             </Col>
           ))
         }
         <Col span={6}>next</Col>
-      </ul>
+      </Col>
     );
   }
 
