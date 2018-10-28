@@ -22,7 +22,9 @@ class ImgCalendar extends React.Component {
       width: props.width || -1,
       height: props.height || -1,
       ArrayData:[],
-      hover:false
+      hover:false,
+      ImgData:[{'27':{'title':"THIS IS TITLE",'content':"THIS IS CONTENT",'data':"THIS IS CRUUENTDATE",'id':'27'},
+      }]
     }
   }
   //组件渲染后调用
@@ -53,13 +55,14 @@ class ImgCalendar extends React.Component {
   }
   //鼠标悬停事件
   onMouseOver = (id) =>{
-    let obj = ReactDOM.findDOMNode(this[`btn-${id}`]);
-    obj.classSet = "hover";
+    //let obj = ReactDOM.findDOMNode(this[`btn-${id}`]);
+   
+
   }
   //鼠标移出事件
    onMouseOut = (id) =>{
-    let obj = ReactDOM.findDOMNode(this[`btn-${id}`]);
-    obj.style.backgroundColor = "";
+
+;
   }
   //鼠标点击事件
   onClick = () =>{
@@ -70,14 +73,16 @@ class ImgCalendar extends React.Component {
     //初始时间到目标时间的时间数组
     let ArrayData = [];
     for(var i=1;i<15;i++){
-      ArrayData.push(moment().subtract('days',i).date());
+      let CurrentDay = moment().subtract('days',i).date();
+      ArrayData.push(CurrentDay);
     }
     ArrayData.sort(function(a,b){return a-b;})
     this.setState({ArrayData});
   }
 
   render() {
-    let  ArrayData = this.state.ArrayData; 
+    let  ArrayData = this.state.ArrayData;
+    let ImgList = this.state.ImgData;
     return(
     <Row className="well_box">
     {
@@ -86,11 +91,12 @@ class ImgCalendar extends React.Component {
       {
         ArrayData.map(item => (  
           <Col className="Position_R" 
-                ref={(div)=>{this[`btn-${item}`] = div}}
-               onMouseOver={()=>this.onMouseOver(item)}
-               onMouseOut = {()=>this.onMouseOut(item)}
-                style={{height:this.state.height,backgroundImage:`url(${img})`,backgroundSize:"100% 100%"}} span={6} key={item}>
+              ref={(div)=>{this[`btn-${item}`] = div}}
+              onMouseOver={()=>this.onMouseOver(item)}
+              onMouseOut = {()=>this.onMouseOut(item)}
+              style={{height:this.state.height,backgroundImage:`url(${img})`,backgroundSize:"100% 100%"}} span={6} key={item}>
             <div className="ShadeWell">{item}</div>
+            <span>{ImgList[item]}</span>
           </Col>
         ))
       }
