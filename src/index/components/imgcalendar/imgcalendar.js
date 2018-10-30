@@ -23,8 +23,23 @@ class ImgCalendar extends React.Component {
       height: props.height || -1,
       ArrayData:[],
       hover:false,
-      ImgData:[{'27':{'title':"THIS IS TITLE",'content':"THIS IS CONTENT",'data':"THIS IS CRUUENTDATE",'id':'27'},
-      }]
+      onMouseOverId:'',
+      ImgData:{
+        '29':{'title':"THIS IS TITLE",'content':"THIS IS CONTENT",'data':"THIS IS CRUUENTDATE",'id':'27'},
+        '28':{'title':"THIS IS TITLE",'content':"THIS IS CONTENT",'data':"THIS IS CRUUENTDATE",'id':'27'},
+        '27':{'title':"THIS IS TITLE",'content':"THIS IS CONTENT",'data':"THIS IS CRUUENTDATE",'id':'27'},
+        '26':{'title':"THIS IS TITLE",'content':"THIS IS CONTENT",'data':"THIS IS CRUUENTDATE",'id':'27'},
+        '25':{'title':"THIS IS TITLE",'content':"THIS IS CONTENT",'data':"THIS IS CRUUENTDATE",'id':'27'},
+        '24':{'title':"THIS IS TITLE",'content':"THIS IS CONTENT",'data':"THIS IS CRUUENTDATE",'id':'27'},
+        '23':{'title':"THIS IS TITLE",'content':"THIS IS CONTENT",'data':"THIS IS CRUUENTDATE",'id':'27'},
+        '22':{'title':"THIS IS TITLE",'content':"THIS IS CONTENT",'data':"THIS IS CRUUENTDATE",'id':'27'},
+        '21':{'title':"THIS IS TITLE",'content':"THIS IS CONTENT",'data':"THIS IS CRUUENTDATE",'id':'27'},
+        '20':{'title':"THIS IS TITLE",'content':"THIS IS CONTENT",'data':"THIS IS CRUUENTDATE",'id':'27'},
+        '19':{'title':"THIS IS TITLE",'content':"THIS IS CONTENT",'data':"THIS IS CRUUENTDATE",'id':'27'},
+        '18':{'title':"THIS IS TITLE",'content':"THIS IS CONTENT",'data':"THIS IS CRUUENTDATE",'id':'27'},
+        '17':{'title':"THIS IS TITLE",'content':"THIS IS CONTENT",'data':"THIS IS CRUUENTDATE",'id':'27'},
+        '16':{'title':"THIS IS TITLE",'content':"THIS IS CONTENT",'data':"THIS IS CRUUENTDATE",'id':'27'}
+      }
     }
   }
   //组件渲染后调用
@@ -56,12 +71,12 @@ class ImgCalendar extends React.Component {
   //鼠标悬停事件
   onMouseOver = (id) =>{
     //let obj = ReactDOM.findDOMNode(this[`btn-${id}`]);
-   
-
+    // console.log(this.refs[`btn-`+id+`-content`]);
+    this.setState({onMouseOverId:id});
   }
   //鼠标移出事件
    onMouseOut = (id) =>{
-
+    this.setState({onMouseOverId:''});
 ;
   }
   //鼠标点击事件
@@ -82,21 +97,21 @@ class ImgCalendar extends React.Component {
 
   render() {
     let  ArrayData = this.state.ArrayData;
-    let ImgList = this.state.ImgData;
+    //let ImgList = this.state.ImgData;
     return(
     <Row className="well_box">
     {
       <Col span={24} className="wells">
       <Col span={6}>back</Col>
       {
-        ArrayData.map(item => (  
+        ArrayData.map(item => ( 
           <Col className="Position_R" 
               ref={(div)=>{this[`btn-${item}`] = div}}
               onMouseOver={()=>this.onMouseOver(item)}
               onMouseOut = {()=>this.onMouseOut(item)}
               style={{height:this.state.height,backgroundImage:`url(${img})`,backgroundSize:"100% 100%"}} span={6} key={item}>
             <div className="ShadeWell">{item}</div>
-            <span>{ImgList[item]}</span>
+            <div ref={`btn-${item}-content`} className={this.state.onMouseOverId===item?"ImgContent":"none"}>1122</div> 
           </Col>
         ))
       }
