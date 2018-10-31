@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import moment from 'moment';
-import {Col,Row} from 'antd';
+import {Col,Row,Tag,Icon} from 'antd';
 import 'moment/locale/zh-cn';
 import "./imgcalendar.less";
 import "../../index.less";
@@ -25,20 +25,21 @@ class ImgCalendar extends React.Component {
       hover:false,
       onMouseOverId:'',
       ImgData:{
-        '29':{'title':"THIS IS TITLE",'content':"THIS IS CONTENT",'data':"THIS IS CRUUENTDATE",'id':'27'},
-        '28':{'title':"THIS IS TITLE",'content':"THIS IS CONTENT",'data':"THIS IS CRUUENTDATE",'id':'27'},
-        '27':{'title':"THIS IS TITLE",'content':"THIS IS CONTENT",'data':"THIS IS CRUUENTDATE",'id':'27'},
-        '26':{'title':"THIS IS TITLE",'content':"THIS IS CONTENT",'data':"THIS IS CRUUENTDATE",'id':'27'},
-        '25':{'title':"THIS IS TITLE",'content':"THIS IS CONTENT",'data':"THIS IS CRUUENTDATE",'id':'27'},
-        '24':{'title':"THIS IS TITLE",'content':"THIS IS CONTENT",'data':"THIS IS CRUUENTDATE",'id':'27'},
-        '23':{'title':"THIS IS TITLE",'content':"THIS IS CONTENT",'data':"THIS IS CRUUENTDATE",'id':'27'},
-        '22':{'title':"THIS IS TITLE",'content':"THIS IS CONTENT",'data':"THIS IS CRUUENTDATE",'id':'27'},
-        '21':{'title':"THIS IS TITLE",'content':"THIS IS CONTENT",'data':"THIS IS CRUUENTDATE",'id':'27'},
-        '20':{'title':"THIS IS TITLE",'content':"THIS IS CONTENT",'data':"THIS IS CRUUENTDATE",'id':'27'},
-        '19':{'title':"THIS IS TITLE",'content':"THIS IS CONTENT",'data':"THIS IS CRUUENTDATE",'id':'27'},
-        '18':{'title':"THIS IS TITLE",'content':"THIS IS CONTENT",'data':"THIS IS CRUUENTDATE",'id':'27'},
-        '17':{'title':"THIS IS TITLE",'content':"THIS IS CONTENT",'data':"THIS IS CRUUENTDATE",'id':'27'},
-        '16':{'title':"THIS IS TITLE",'content':"THIS IS CONTENT",'data':"THIS IS CRUUENTDATE",'id':'27'}
+        '31':{'title':"这个是测试标题头看啊可能有什么效果",'content':"THIS IS CONTENT",'data':"这个是测试标题头看啊可能有什么效果",'id':'27','tag':["可乐","柠檬","橘子"]},
+        '30':{'title':"这个是测试标题头看啊可能有什么效果",'content':"THIS IS CONTENT",'data':"这个是测试标题头看啊可能有什么效果",'id':'27','tag':["可乐","柠檬","橘子"]},
+        '29':{'title':"这个是测试标题头看啊可能有什么效果",'content':"THIS IS CONTENT",'data':"这个是测试标题头看啊可能有什么效果",'id':'27','tag':["可乐","柠檬","橘子"]},
+        '28':{'title':"这个是测试标题头看啊可能有什么效果",'content':"THIS IS CONTENT",'data':"这个是测试标题头看啊可能有什么效果",'id':'27','tag':["可乐","柠檬","橘子"]},
+        '27':{'title':"这个是测试标题头看啊可能有什么效果",'content':"THIS IS CONTENT",'data':"这个是测试标题头看啊可能有什么效果",'id':'27','tag':["可乐","柠檬","橘子"]},
+        '26':{'title':"这个是测试标题头看啊可能有什么效果",'content':"THIS IS CONTENT",'data':"这个是测试标题头看啊可能有什么效果",'id':'27','tag':["可乐","柠檬","橘子"]},
+        '25':{'title':"这个是测试标题头看啊可能有什么效果",'content':"THIS IS CONTENT",'data':"这个是测试标题头看啊可能有什么效果",'id':'27','tag':["可乐","柠檬","橘子"]},
+        '24':{'title':"这个是测试标题头看啊可能有什么效果",'content':"THIS IS CONTENT",'data':"这个是测试标题头看啊可能有什么效果",'id':'27','tag':["可乐","柠檬","橘子"]},
+        '23':{'title':"这个是测试标题头看啊可能有什么效果",'content':"THIS IS CONTENT",'data':"这个是测试标题头看啊可能有什么效果",'id':'27','tag':["可乐","柠檬","橘子"]},
+        '22':{'title':"这个是测试标题头看啊可能有什么效果",'content':"THIS IS CONTENT",'data':"这个是测试标题头看啊可能有什么效果",'id':'27','tag':["可乐","柠檬","橘子"]},
+        '21':{'title':"这个是测试标题头看啊可能有什么效果",'content':"THIS IS CONTENT",'data':"这个是测试标题头看啊可能有什么效果",'id':'27','tag':["可乐","柠檬","橘子"]},
+        '20':{'title':"这个是测试标题头看啊可能有什么效果",'content':"THIS IS CONTENT",'data':"这个是测试标题头看啊可能有什么效果",'id':'27','tag':["可乐","柠檬","橘子"]},
+        '19':{'title':"这个是测试标题头看啊可能有什么效果",'content':"THIS IS CONTENT",'data':"这个是测试标题头看啊可能有什么效果",'id':'27','tag':["可乐","柠檬","橘子"]},
+        '18':{'title':"这个是测试标题头看啊可能有什么效果",'content':"THIS IS CONTENT",'data':"这个是测试标题头看啊可能有什么效果",'id':'27','tag':["可乐","柠檬","橘子"]},
+        '17':{'title':"这个是测试标题头看啊可能有什么效果",'content':"THIS IS CONTENT",'data':"这个是测试标题头看啊可能有什么效果",'id':'27','tag':["可乐","柠檬","橘子"]},
       }
     }
   }
@@ -70,8 +71,6 @@ class ImgCalendar extends React.Component {
   }
   //鼠标悬停事件
   onMouseOver = (id) =>{
-    //let obj = ReactDOM.findDOMNode(this[`btn-${id}`]);
-    // console.log(this.refs[`btn-`+id+`-content`]);
     this.setState({onMouseOverId:id});
   }
   //鼠标移出事件
@@ -97,23 +96,44 @@ class ImgCalendar extends React.Component {
 
   render() {
     let  ArrayData = this.state.ArrayData;
-    //let ImgList = this.state.ImgData;
+    let ImgList = this.state.ImgData;
     return(
     <Row className="well_box">
     {
       <Col span={24} className="wells">
       <Col span={6}>back</Col>
       {
-        ArrayData.map(item => ( 
-          <Col className="Position_R" 
+        ArrayData.map(item => {
+          const  tags = ImgList[item]['tag']; 
+          return <Col className="Position_R" 
               ref={(div)=>{this[`btn-${item}`] = div}}
               onMouseOver={()=>this.onMouseOver(item)}
               onMouseOut = {()=>this.onMouseOut(item)}
               style={{height:this.state.height,backgroundImage:`url(${img})`,backgroundSize:"100% 100%"}} span={6} key={item}>
             <div className="ShadeWell">{item}</div>
-            <div ref={`btn-${item}-content`} className={this.state.onMouseOverId===item?"ImgContent":"none"}>1122</div> 
+            <div ref={`btn-${item}-content`} className={this.state.onMouseOverId===item?"ImgContent":"none"}>
+            { 
+                
+                // this.state.onMouseOverId===item && (
+                    <Col className="main_img_content">
+                    <div className="main_img_title">
+                      {ImgList[item]['title']}
+                    </div>
+                    <div className="main_img_tag">
+                      <div className="main_img_tag_date">2018/01/01</div>
+                      { 
+                          tags.length>0 && tags.map((e,i)=>{
+                            return  <Tag  className="main_img_tag" key={i}>{e}</Tag>
+                          })
+                      }
+                    </div>
+                  </Col>
+                  // ) 
+              }
+            </div> 
           </Col>
-        ))
+        }
+        )
       }
       <Col span={6}>next</Col>
     </Col>
