@@ -4,7 +4,7 @@ import 'antd/dist/antd.css';
 import './layout.less';
 
 
-import ImgCalendar from "../calendar/calendar.js"
+import ImgCalendar from "../imgcalendar/imgcalendar.js"
 const { Header, Content, Footer } = Layout;
 
 
@@ -14,7 +14,8 @@ class SiderDemo extends Component {
         mode: 'inline',
         defaultProps:{
           open:false
-        }
+        },
+        imgData:{'27':{'title':"THIS IS TITLE",'content':"THIS IS CONTENT",'data':"THIS IS CRUUENTDATE",'id':'27'}}
     };    
     toggle = () => {
         this.setState({
@@ -45,14 +46,14 @@ class SiderDemo extends Component {
           <Content style={{marginTop: 64 }}>
                 <Row>
                 <Col span={10}>
-                <ImgCalendar />
+                <ImgCalendar date={this.state.imgData} />
                 </Col>
                 <Col span={10}>
-                <ImgCalendar />
+
                 </Col>
 
                 <Col span={2}>
-                <ImgCalendar />
+
                 </Col>
 
               </Row>
