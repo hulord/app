@@ -23,8 +23,7 @@ class ImgCalendar extends React.Component {
       height: props.height || -1,
       ArrayData:[],
       hover:false,
-      ImgData:[{'27':{'title':"THIS IS TITLE",'content':"THIS IS CONTENT",'data':"THIS IS CRUUENTDATE",'id':'27'},
-      }]
+
     }
   }
   //组件渲染后调用
@@ -82,9 +81,11 @@ class ImgCalendar extends React.Component {
 
   render() {
     let  ArrayData = this.state.ArrayData;
-    let ImgList = this.state.ImgData;
+    const  {imgData} = this.props;
+    console.log(imgData);
     return(
     <Row className="well_box">
+    <div>{imgData}</div>
     {
       <Col span={24} className="wells">
       <Col span={6}>back</Col>
@@ -96,7 +97,7 @@ class ImgCalendar extends React.Component {
               onMouseOut = {()=>this.onMouseOut(item)}
               style={{height:this.state.height,backgroundImage:`url(${img})`,backgroundSize:"100% 100%"}} span={6} key={item}>
             <div className="ShadeWell">{item}</div>
-            <span>{ImgList[item]}</span>
+            <span></span>
           </Col>
         ))
       }
