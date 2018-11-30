@@ -100,7 +100,6 @@ class ImgCalendar extends React.Component {
     //let ImgList = this.state.ImgData;
     return(
     <Row className="well_box">
-    <div>{imgData}</div>
     {
       <Col span={24} className="wells">
       <Col span={6}>back</Col>

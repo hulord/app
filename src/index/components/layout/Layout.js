@@ -48,9 +48,7 @@ class SiderDemo extends Component {
                 <Col span={10}>
                 <ImgCalendar date={this.state.imgData} />
                 </Col>
-                <Col span={10}>
-
-                </Col>
+                <Col span={10}></Col>
 
                 <Col span={2}>
 
