@@ -1,22 +1,16 @@
-import { Layout, Menu, Row, Col} from 'antd';
+import {Layout, Menu, Icon,Col,Row } from 'antd';
 import React, { Component } from 'react';
 import 'antd/dist/antd.css';
 import './layout.less';
 
 
-import ImgCalendar from "../imgcalendar/imgcalendar.js"
-const { Header, Content, Footer } = Layout;
+const { Header, Sider, Content } = Layout;
 
 
 class SiderDemo extends Component {
     state = {
-        collapsed: false,
-        mode: 'inline',
-        defaultProps:{
-          open:false
-        },
-        imgData:{'27':{'title':"THIS IS TITLE",'content':"THIS IS CONTENT",'data':"THIS IS CRUUENTDATE",'id':'27'}}
-    };    
+      collapsed: false,
+    };  
     toggle = () => {
         this.setState({
             collapsed: !this.state.collapsed,
@@ -28,38 +22,41 @@ class SiderDemo extends Component {
 
     render() {
         return (
-          <Layout className="MyLayout">
-          <Header  style={{ height:'72px',background:"white",position: 'fixed', zIndex: 1, width: '100%' }}>
-            <div className="logo" >
-            </div> 
-            <Menu
-              theme="white" 
-              mode="horizontal"
-              defaultSelectedKeys={['2']}
-              style={{ lineHeight: '70px' }}
-            >
-              <Menu.Item key="1">首页</Menu.Item>
-              <Menu.Item key="2">图片</Menu.Item>
-              <Menu.Item key="3">文章</Menu.Item>
-            </Menu>
-          </Header>
-          <Content style={{marginTop: 64 }}>
-                <Row>
-                <Col span={10}>
-                <ImgCalendar date={this.state.imgData} />
-                </Col>
-                <Col span={10}></Col>
-
-                <Col span={2}>
-
-                </Col>
-
-              </Row>
-          </Content>
-          <Footer style={{ textAlign: 'center' }}>
-            Ant Design ©2018 Created by Ant UED
-          </Footer>
-        </Layout>
+          <Layout className="bg">
+            <Row style={{ padding: '0 245px'}}>
+              <Col span={24}>
+                    <Col span={18} style={{height:"17vw" }}>FLASH</Col>
+                    <Col span={6}>weather</Col>
+              </Col>
+                <Content style={{height:"100v"}}>
+                  <Col span ={4}>
+                        <Sider
+                          trigger={null}
+                          collapsible
+                          collapsed={this.state.collapsed}
+                        >
+                          <div className="logo" />
+                          <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
+                            <Menu.Item key="1">
+                              <Icon type="user" />
+                              <span>nav 1</span>
+                            </Menu.Item>
+                            <Menu.Item key="2">
+                              <Icon type="video-camera" />
+                              <span>nav 2</span>
+                            </Menu.Item>
+                            <Menu.Item key="3">
+                              <Icon type="upload" />
+                              <span>nav 3</span>
+                            </Menu.Item>
+                          </Menu>
+                        </Sider>
+                    </Col>
+                    <Col span={20}>
+                    </Col>
+                </Content>
+            </Row>
+          </Layout>
         );
     }
 }

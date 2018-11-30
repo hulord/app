@@ -38,7 +38,16 @@ const menuGlobal=[
         icon:'imgcalendar',
         path: '/imgcalendar',
         component: () => import('../index/components/imgcalendar/imgcalendar.js'),
+    },
+    {
+        id:'content1',
+        pid:'4',
+        name:'自定义内容',
+        icon:'content1',
+        path: '/content',
+        component: () => import('../index/components/content/content.js'),
     }
+
 
   ];
   
