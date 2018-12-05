@@ -55,8 +55,8 @@ class SiderDemo extends Component {
                     </Col>
                     <Col span={20}>
                         <Content style={{ margin: '0 16px' }}>
-                          <div key={1}  style={{ background: '#fff', minHeight: 360,height:'100%' }}>
-                           dfafsfsdfsfs
+                          <div style={{ background: '#fff', minHeight: 360,height:'100%' }}>
+                           
                           </div>
                         </Content>
                     </Col>
