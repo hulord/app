@@ -4,7 +4,7 @@ import 'antd/dist/antd.css';
 import './layout.less';
 
 
-const { Header, Sider, Content } = Layout;
+const {  Sider, Content } = Layout;
 
 
 class SiderDemo extends Component {
@@ -23,17 +23,18 @@ class SiderDemo extends Component {
     render() {
         return (
           <Layout className="bg">
-            <Row style={{ padding: '0 245px'}}>
-              <Col span={24}>
+            <Row  style={{ width:'100%',margin:'0px'}} gutter={256}>
+              <Col span={24} >
                     <Col span={18} style={{height:"17vw" }}>FLASH</Col>
                     <Col span={6}>weather</Col>
               </Col>
-                <Content style={{height:"100v"}}>
+                <Col span={24}div style={{height:"100v"}}>
                   <Col span ={4}>
                         <Sider
-                          trigger={null}
-                          collapsible
-                          collapsed={this.state.collapsed}
+                          breakpoint="xl"
+                          collapsedWidth="100"
+                          onBreakpoint={(broken) => { console.log(broken); }}
+                          onCollapse={(collapsed, type) => { console.log(collapsed, type); }}
                         >
                           <div className="logo" />
                           <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
@@ -53,8 +54,13 @@ class SiderDemo extends Component {
                         </Sider>
                     </Col>
                     <Col span={20}>
+                        <Content style={{ margin: '0 16px' }}>
+                          <div key={1}  style={{ background: '#fff', minHeight: 360,height:'100%' }}>
+                           dfafsfsdfsfs
+                          </div>
+                        </Content>
                     </Col>
-                </Content>
+                </Col>
             </Row>
           </Layout>
         );
