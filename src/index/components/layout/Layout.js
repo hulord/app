@@ -1,7 +1,8 @@
-import { Layout, Menu, Row, Col} from 'antd';
+import {Layout, Menu, Icon,Col,Row } from 'antd';
 import React, { Component } from 'react';
 import 'antd/dist/antd.css';
 import './layout.less';
+import Content from '../content/content.js'; 
 
 
 import ImgCalendar from "../calendar/calendar.js"
@@ -10,12 +11,8 @@ const { Header, Content, Footer } = Layout;
 
 class SiderDemo extends Component {
     state = {
-        collapsed: false,
-        mode: 'inline',
-        defaultProps:{
-          open:false
-        }
-    };    
+      collapsed: false,
+    };  
     toggle = () => {
         this.setState({
             collapsed: !this.state.collapsed,
@@ -27,32 +24,51 @@ class SiderDemo extends Component {
 
     render() {
         return (
-          <Layout className="MyLayout">
-          <Header  style={{ height:'72px',background:"white",position: 'fixed', zIndex: 1, width: '100%' }}>
-            <div className="logo" >
-            </div> 
-            <Menu
-              theme="white" 
-              mode="horizontal"
-              defaultSelectedKeys={['2']}
-              style={{ lineHeight: '70px' }}
-            >
-              <Menu.Item key="1">首页</Menu.Item>
-              <Menu.Item key="2">图片</Menu.Item>
-              <Menu.Item key="3">文章</Menu.Item>
-            </Menu>
-          </Header>
-          <Content style={{marginTop: 64 }}>
-                <Row>
-                <Col span={10}>
-                <ImgCalendar />
+          <Layout className="bg">
+            <Row  style={{ width:'100%',margin:'0px'}} gutter={256}>
+              <Col span={24} >
+                    <Col span={18} style={{height:"17vw" }}>FLASH</Col>
+                    <Col span={6}>weather</Col>
+              </Col>
+                <Col  className="index-content" span={24} style={{height:"100v"}}>
+                    <Col span ={4}>
+                    <Sider
+                        breakpoint="lg"
+                        collapsedWidth="0"
+                        onBreakpoint={(broken) => { console.log(broken); }}
+                        onCollapse={(collapsed, type) => { console.log(collapsed, type); }}
+                      >
+                        <div className="logo" />
+                        <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}>
+                          <Menu.Item key="1">
+                            <Icon type="user" />
+                            <span className="nav-text">nav 1</span>
+                          </Menu.Item>
+                          <Menu.Item key="2">
+                            <Icon type="video-camera" />
+                            <span className="nav-text">nav 2</span>
+                          </Menu.Item>
+                          <Menu.Item key="3">
+                            <Icon type="upload" />
+                            <span className="nav-text">nav 3</span>
+                          </Menu.Item>
+                          <Menu.Item key="4">
+                            <Icon type="user" />
+                            <span className="nav-text">nav 4</span>
+                          </Menu.Item>
+                        </Menu>
+                      </Sider>
+                    </Col>
+                    <Col span={20}>
+                        <Content style={{ margin: '0 16px' }}>
+                          <div style={{ background: '#fff', minHeight: 360,height:'100%' }}>
+
+                          </div>
+                        </Content>
+                    </Col>
                 </Col>
-              </Row>
-          </Content>
-          <Footer style={{ textAlign: 'center' }}>
-            Ant Design ©2018 Created by Ant UED
-          </Footer>
-        </Layout>
+            </Row>
+          </Layout>
         );
     }
 }
