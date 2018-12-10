@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import moment from 'moment';
-import {Col,Row,Tag,Icon} from 'antd';
+import {Col,Row,Tag} from 'antd';
 import 'moment/locale/zh-cn';
 import "./imgcalendar.less";
 import "../../index.less";

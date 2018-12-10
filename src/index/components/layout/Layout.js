@@ -2,16 +2,16 @@ import {Layout, Menu, Icon,Col,Row } from 'antd';
 import React, { Component } from 'react';
 import 'antd/dist/antd.css';
 import './layout.less';
+import '../../index.less';
 import Content from '../content/content.js'; 
 
-
-import ImgCalendar from "../calendar/calendar.js"
-const { Header, Content, Footer } = Layout;
+const {  Sider } = Layout;
 
 
 class SiderDemo extends Component {
     state = {
       collapsed: false,
+
     };  
     toggle = () => {
         this.setState({
@@ -25,21 +25,21 @@ class SiderDemo extends Component {
     render() {
         return (
           <Layout className="bg">
-            <Row  style={{ width:'100%',margin:'0px'}} gutter={256}>
+            <Row  style={{ width:'100%',margin:'0px',paddingLeft:"15%",paddingRight:"15%"}} >
               <Col span={24} >
                     <Col span={18} style={{height:"17vw" }}>FLASH</Col>
-                    <Col span={6}>weather</Col>
+                    <Col span={6} >weather</Col>
               </Col>
-                <Col  className="index-content" span={24} style={{height:"100v"}}>
-                    <Col span ={4}>
+                <Col className="index-content">
+                  <Col span ={4}>
                     <Sider
-                        breakpoint="lg"
+                        breakpoint="sm"
                         collapsedWidth="0"
                         onBreakpoint={(broken) => { console.log(broken); }}
                         onCollapse={(collapsed, type) => { console.log(collapsed, type); }}
                       >
                         <div className="logo" />
-                        <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}>
+                        <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
                           <Menu.Item key="1">
                             <Icon type="user" />
                             <span className="nav-text">nav 1</span>
