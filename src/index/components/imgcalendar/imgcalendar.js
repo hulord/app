@@ -25,6 +25,11 @@ class ImgCalendar extends React.Component {
       hover:false,
       onMouseOverId:'',
       ImgData:{
+        '5':{'title':"这个是测试标题头看啊可能有什么效果",'content':"THIS IS CONTENT",'data':"这个是测试标题头看啊可能有什么效果",'id':'27','tag':["可乐","柠檬","橘子"]},
+        '4':{'title':"这个是测试标题头看啊可能有什么效果",'content':"THIS IS CONTENT",'data':"这个是测试标题头看啊可能有什么效果",'id':'27','tag':["可乐","柠檬","橘子"]},
+        '3':{'title':"这个是测试标题头看啊可能有什么效果",'content':"THIS IS CONTENT",'data':"这个是测试标题头看啊可能有什么效果",'id':'27','tag':["可乐","柠檬","橘子"]},
+        '2':{'title':"这个是测试标题头看啊可能有什么效果",'content':"THIS IS CONTENT",'data':"这个是测试标题头看啊可能有什么效果",'id':'27','tag':["可乐","柠檬","橘子"]},
+        '1':{'title':"这个是测试标题头看啊可能有什么效果",'content':"THIS IS CONTENT",'data':"这个是测试标题头看啊可能有什么效果",'id':'27','tag':["可乐","柠檬","橘子"]},
         '31':{'title':"这个是测试标题头看啊可能有什么效果",'content':"THIS IS CONTENT",'data':"这个是测试标题头看啊可能有什么效果",'id':'27','tag':["可乐","柠檬","橘子"]},
         '30':{'title':"这个是测试标题头看啊可能有什么效果",'content':"THIS IS CONTENT",'data':"这个是测试标题头看啊可能有什么效果",'id':'27','tag':["可乐","柠檬","橘子"]},
         '29':{'title':"这个是测试标题头看啊可能有什么效果",'content':"THIS IS CONTENT",'data':"这个是测试标题头看啊可能有什么效果",'id':'27','tag':["可乐","柠檬","橘子"]},
@@ -35,11 +40,6 @@ class ImgCalendar extends React.Component {
         '24':{'title':"这个是测试标题头看啊可能有什么效果",'content':"THIS IS CONTENT",'data':"这个是测试标题头看啊可能有什么效果",'id':'27','tag':["可乐","柠檬","橘子"]},
         '23':{'title':"这个是测试标题头看啊可能有什么效果",'content':"THIS IS CONTENT",'data':"这个是测试标题头看啊可能有什么效果",'id':'27','tag':["可乐","柠檬","橘子"]},
         '22':{'title':"这个是测试标题头看啊可能有什么效果",'content':"THIS IS CONTENT",'data':"这个是测试标题头看啊可能有什么效果",'id':'27','tag':["可乐","柠檬","橘子"]},
-        '21':{'title':"这个是测试标题头看啊可能有什么效果",'content':"THIS IS CONTENT",'data':"这个是测试标题头看啊可能有什么效果",'id':'27','tag':["可乐","柠檬","橘子"]},
-        '20':{'title':"这个是测试标题头看啊可能有什么效果",'content':"THIS IS CONTENT",'data':"这个是测试标题头看啊可能有什么效果",'id':'27','tag':["可乐","柠檬","橘子"]},
-        '19':{'title':"这个是测试标题头看啊可能有什么效果",'content':"THIS IS CONTENT",'data':"这个是测试标题头看啊可能有什么效果",'id':'27','tag':["可乐","柠檬","橘子"]},
-        '18':{'title':"这个是测试标题头看啊可能有什么效果",'content':"THIS IS CONTENT",'data':"这个是测试标题头看啊可能有什么效果",'id':'27','tag':["可乐","柠檬","橘子"]},
-        '17':{'title':"这个是测试标题头看啊可能有什么效果",'content':"THIS IS CONTENT",'data':"这个是测试标题头看啊可能有什么效果",'id':'27','tag':["可乐","柠檬","橘子"]},
       }
     }
   }
@@ -70,11 +70,11 @@ class ImgCalendar extends React.Component {
     }
   }
   //鼠标悬停事件
-  onMouseOver = (id) =>{
+  onMouseEnter = (id) =>{
     this.setState({onMouseOverId:id});
   }
   //鼠标移出事件
-   onMouseOut = (id) =>{
+  onMouseLeave = (id) =>{
     this.setState({onMouseOverId:''});
 ;
   }
@@ -99,37 +99,39 @@ class ImgCalendar extends React.Component {
     let ImgList = this.state.ImgData;
     return(
     <Row className="well_box">
-    <div>{imgData}</div>
     {
       <Col span={24} className="wells">
       <Col span={6}>back</Col>
       {
         ArrayData.map(item => {
           const  tags = ImgList[item]['tag']; 
+
           return <Col className="Position_R" 
               ref={(div)=>{this[`btn-${item}`] = div}}
-              onMouseOver={()=>this.onMouseOver(item)}
-              onMouseOut = {()=>this.onMouseOut(item)}
+              onMouseEnter={()=>this.onMouseEnter(item)}
+              onMouseLeave = {()=>this.onMouseLeave(item)}
               style={{height:this.state.height,backgroundImage:`url(${img})`,backgroundSize:"100% 100%"}} span={6} key={item}>
             <div className="ShadeWell">{item}</div>
-            <div ref={`btn-${item}-content`} className={this.state.onMouseOverId===item?"ImgContent":"none"}>
+            <div ref={`btn-${item}-content`} 
+             className={this.state.onMouseOverId===item?"ImgContent":"ImgContent"}
+            >
             { 
                 
                 // this.state.onMouseOverId===item && (
                     <Col className="main_img_content">
-                    <div className="main_img_title">
-                      {ImgList[item]['title']}
-                    </div>
-                    <div className="main_img_tag">
-                      <div className="main_img_tag_date">2018/01/01</div>
-                      { 
-                          tags.length>0 && tags.map((e,i)=>{
-                            return  <Tag  className="main_img_tag" key={i}>{e}</Tag>
-                          })
-                      }
-                    </div>
-                  </Col>
-                  // ) 
+                      <div className="main_img_title">
+                        {ImgList[item]['title']}
+                      </div>
+                      <div className="main_img_tag">
+                        <div className="main_img_tag_date">2018/01/01</div>
+                        { 
+                            tags.length>0 && tags.map((e,i)=>{
+                              return  <Tag  className="main_img_tag" key={i}>{e}</Tag>
+                            })
+                        }
+                      </div>
+                    </Col>
+                  //  ) 
               }
             </div> 
           </Col>
