@@ -3,6 +3,19 @@
   background: url(../../../asset/img/bg.png);
   background-size:100% 100%;  
   background-repeat: repeat;
+  .index-header-left {
+    .ant-carousel .slick-slide {
+      text-align: center;
+      height: 17vw;
+      line-height: 17vw;
+      background:rgba(243, 131, 102, 0.85);
+      overflow: hidden;
+    }
+    
+    .ant-carousel .slick-slide h3 {
+      color: #fff;
+    }
+  }
 
   .index-content{
     .ant-layout-sider {
@@ -14,8 +27,37 @@
       min-width: 100%!important;
       max-width: 100%!important;
     }
+    .index-sider {
+      .index-avatar {
+        height: 33vh;
+        .avatar-img {
+            min-height: 25vh;
+            flex-direction: column;
+            color:#fff;
+            .avatar-title {
+              padding:1vh 0;
+              font-size:1.1vw;
+              font-weight: 300;
+            }
+            .avatar-todo {
+                i{
+                  font-size: 1vw;
+                }
+            }
+            span {
+              width: 40%;
+              height: 40%;
+              line-height:  40%;
+              border-radius: 50%;
+              border: 2px solid rgba(243,131,102,0.85);
+            }
+        }
+      }
+    }
   } 
 }
+
+
 #components-layout-demo-top .logo {
   width: 120px;
   height: 31px;
