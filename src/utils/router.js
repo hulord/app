@@ -4,7 +4,7 @@ import dynamic from 'dva/dynamic'
 
 
 
-import {config} from './index'
+import {config} from '.'
 const { menuGlobal } = config
  
 function RouterConfig({ history, app }) {

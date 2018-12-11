@@ -15,7 +15,6 @@ export default {
     },
   
     effects: {
- 
       * changeLang ({
         payload: {value},
         }, { put }) {

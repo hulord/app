@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import 'antd/dist/antd.css';
 import './layout.less';
 import '../../index.less';
-import Content from '../content/content.js'; 
+import Content from '../content/content'; 
 
 const { Sider } = Layout;
 const UserList = ['U', 'Lucy', 'Tom', 'Edward'];

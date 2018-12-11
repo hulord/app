@@ -29,7 +29,7 @@ const menuGlobal=[
         name:'日历组件',
         icon:'calendar',
         path: '/calendar',
-        component: () => import('../index/components/calendar/calendar.js'),
+        component: () => import('../index/components/calendar/calendar'),
     },
     {
         id:'imgcalendar',
@@ -37,7 +37,7 @@ const menuGlobal=[
         name:'自定义日历组件',
         icon:'imgcalendar',
         path: '/imgcalendar',
-        component: () => import('../index/components/imgcalendar/imgcalendar.js'),
+        component: () => import('../index/components/imgcalendar/imgcalendar'),
     },
     {
         id:'content1',
@@ -45,7 +45,7 @@ const menuGlobal=[
         name:'自定义内容',
         icon:'content1',
         path: '/content',
-        component: () => import('../index/components/content/content.js'),
+        component: () => import('../index/components/content/content'),
     }
 
 
