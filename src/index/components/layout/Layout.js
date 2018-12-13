@@ -1,5 +1,6 @@
 import {Layout,Menu,Icon,Col,Row,Avatar,Button,Carousel} from 'antd';
 import React, { Component } from 'react';
+import {connect} from 'dva'
 import 'antd/dist/antd.css';
 import './layout.less';
 import '../../index.less';
@@ -32,6 +33,8 @@ class SiderDemo extends Component {
       });
     }
     render() {
+        const {app} = this.props;
+        console.log(app);
         return (
           <Layout className="bg">
             <Row  style={{ width:'100%',margin:'0px',paddingLeft:"15%",paddingRight:"15%"}} >
@@ -99,4 +102,7 @@ class SiderDemo extends Component {
     }
 }
 
-export default SiderDemo;
+export default connect(
+    ({app})=>({app}))(SiderDemo);
+
+

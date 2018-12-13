@@ -10,6 +10,7 @@
 import dva from 'dva';
 import './index/index.less'; 
 import createHistory from 'history/createBrowserHistory'
+
  
 // 1. Initialize
 const app = dva({
@@ -20,8 +21,11 @@ const app = dva({
 // app.use({});
  
 // 3. Model
-app.model(require('./utils/model').default);
- 
+require('./models');
+require('./models').default.forEach(key => {
+    app.model(key.default);
+  });
+
 // 4. Router
 app.router(require('./utils/router').default);
  

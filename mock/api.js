@@ -1,9 +1,10 @@
-import Mock from 'mockjs'
+let Mock  = require('C:/Users/Admin/AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/mockjs') 
 let Random = Mock.Random;
 
 module.exports = function() {
     var data = {//定义等下要返回的json数据
-        news: []
+        news: [],
+        data:[{a:"fdsf"}]
     };
 
     var images = [1,2,3].map(x=>Random.image('200x100', Random.color(), Random.word(2,6))); //随机成长3个图片信息 尺寸 颜色 和随机字母的数组

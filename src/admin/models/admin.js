@@ -1,23 +1,21 @@
-
-
 export default {
-     
-    namespace: 'app',
+ 
+    namespace: 'admin',
   
-    state:{
-        test:'test1111'
+    state: {
+      name:'这是app的model'
     },
   
     subscriptions: {
-        
+      
     },
   
     effects: {
-
-        
+      
     },
   
     reducers: {
-
-    }
+      
+    },
+  
   };

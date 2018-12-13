@@ -1,10 +1,8 @@
 import React from 'react';
 import { Router, Route, Switch } from 'dva/router';
 import dynamic from 'dva/dynamic'
-
-
-
 import {config} from '.'
+
 const { menuGlobal } = config
  
 function RouterConfig({ history, app }) {
@@ -28,5 +26,5 @@ function RouterConfig({ history, app }) {
     </Router>
   );
 }
- 
+
 export default RouterConfig;

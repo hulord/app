@@ -23,5 +23,12 @@
     "build": "react-app-rewired build",
     "test": " react-app-rewired test --env=jsdom",
     "eject": "react-app-rewired eject"
+  },
+  "proxy": {
+    "/api": {
+      "target": "http://localhost:3003/news",
+      "changeOrigin": true,
+      "secure": false
+    }
   }
 }
