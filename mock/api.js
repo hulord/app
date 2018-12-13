@@ -1,4 +1,4 @@
-let Mock  = require('C:/Users/Admin/AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/mockjs') 
+const Mock = require('mockjs');
 let Random = Mock.Random;
 
 module.exports = function() {
