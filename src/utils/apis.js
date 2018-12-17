@@ -1,4 +1,4 @@
-const APIV1 = '/v1'
+const APIV1 = '/api'
 const APIV2 = '/api/v2'
 
 module.exports = {

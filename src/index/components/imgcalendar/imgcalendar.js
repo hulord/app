@@ -1,5 +1,5 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import ReactDOM from 'C:/Users/Admin/AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/react-dom'
 import moment from 'moment';
 import {Col,Row,Tag} from 'antd';
 import 'moment/locale/zh-cn';
