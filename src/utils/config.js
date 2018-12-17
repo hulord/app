@@ -46,6 +46,14 @@ const menuGlobal=[
         icon:'content1',
         path: '/content',
         component: () => import('../index/components/content/content'),
+    },
+    {
+        id:'login',
+        pid:'4',
+        name:'登录',
+        icon:'login',
+        path: '/login',
+        component: () => import('../index/components/login'),
     }
 
 

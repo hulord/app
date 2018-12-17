@@ -33,8 +33,8 @@ class SiderDemo extends Component {
       });
     }
     render() {
-        const {app} = this.props;
-        console.log(app);
+        const {user} = this.props;
+        console.log(user);
         return (
           <Layout className="bg">
             <Row  style={{ width:'100%',margin:'0px',paddingLeft:"15%",paddingRight:"15%"}} >
@@ -103,6 +103,7 @@ class SiderDemo extends Component {
 }
 
 export default connect(
-    ({app})=>({app}))(SiderDemo);
+    ({app})=>({user:app.get("user")})
+)(SiderDemo);
 
 

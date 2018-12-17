@@ -1,10 +1,38 @@
 const Mock = require('mockjs');
 let Random = Mock.Random;
+const config = require('../src/utils/apis')
+const { apiPrefix } = config
+
+//模拟时的基本数据
+// const adminUsers = [
+//   {
+//     id: 0,
+//     username: 'admin',
+//     password: 'admin',
+//     permissions: userPermission.ADMIN,
+//   }, {
+//     id: 1,
+//     username: 'guest',
+//     password: 'guest',
+//     permissions: userPermission.DEFAULT,
+//   }, {
+//     id: 2,
+//     username: '吴彦祖',
+//     password: '123456',
+//     permissions: userPermission.DEVELOPER,
+//   },
+// ]
+
 
 module.exports = function() {
     var data = {//定义等下要返回的json数据
         news: [],
-        data:[{a:"fdsf"}]
+        data:[{a:"fdsf"}],
+        user:{
+            login:Mock.mock('/login','post',function(body){
+                console.log(body);
+            })  
+        },
     };
 
     var images = [1,2,3].map(x=>Random.image('200x100', Random.color(), Random.word(2,6))); //随机成长3个图片信息 尺寸 颜色 和随机字母的数组
