@@ -5,9 +5,7 @@ function user(){
     var data = {//定义等下要返回的json数据
         news: [],
         data:[{a:"fdsf"}],
-        login:Mock.mock('/user/login','post',function(body){
-           console.log(body);
-        })  
+        login:{}
     };
 
     var images = [1,2,3].map(x=>Random.image('200x100', Random.color(), Random.word(2,6))); //随机成长3个图片信息 尺寸 颜色 和随机字母的数组

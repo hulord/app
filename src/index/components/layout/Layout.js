@@ -15,6 +15,7 @@ class SiderDemo extends Component {
       collapsed: false,
       user: UserList[0],
       color: colorList[0],
+      location:''
     };  
     toggle = () => {
         this.setState({
@@ -103,7 +104,7 @@ class SiderDemo extends Component {
 }
 
 export default connect(
-    ({app})=>({user:app.get("user")})
+    ({app})=>({app})
 )(SiderDemo);
 
 

@@ -23,19 +23,19 @@ export default {
           payload,
         }, { put, call, select }) {
           const data = yield call(login, payload)
-          console.log(data);
-          //const { locationQuery } = yield select(_ => _.app)
-        //   if (data.success) {
-        //     const { from } = locationQuery
-        //     yield put({ type: 'app/query' })
-        //     if (from && from !== '/login') {
-        //       yield put(routerRedux.push(from))
-        //     } else {
-        //       yield put(routerRedux.push('/dashboard'))
-        //     }
-        //   } else {
-        //     throw data
-        //   }
+          const { locationQuery } = yield select(_ => _.app)
+          // console.log(locationQuery);
+          if (data.success) {
+            const { from } = locationQuery
+            yield put({ type: 'app/query' })
+            if (from && from !== '/login') {
+              yield put(routerRedux.push(from))
+            } else {
+              yield put(routerRedux.push('/layout'))
+            }
+          } else {
+            throw data
+          }
         },
       },
     reducers: {
