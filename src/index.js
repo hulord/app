@@ -24,7 +24,7 @@ const app = dva({
 require('./models');
 require('./models').default.forEach(key => {
     app.model(key.default);
-  });
+});
 
 // 4. Router
 app.router(require('./utils/router').default);
