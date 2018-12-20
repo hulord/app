@@ -1,21 +1,33 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { LocaleProvider } from "antd";
+import enUS from "antd/es/locale-provider/en_US";
+import Loadable from "components/Loadable";
+import AuthProvider from "components/Authorized/AuthProvider";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to ....</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
+const App = props => {
+  return (
+    <LocaleProvider locale={enUS}>
+      <AuthProvider>
+        <BrowserRouter>
+          <Switch>
+            <Route
+              path="/user"
+              component={Loadable({
+                loader: () => import("layouts/UserLayout"),
+              })}
+            />
+            <Route
+              path="/"
+              component={Loadable({
+                loader: () => import("layouts/BasicLayout"),
+              })}
+            />
+          </Switch>
+        </BrowserRouter>
+      </AuthProvider>
+    </LocaleProvider>
+  );
+};
 
 export default App;

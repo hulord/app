@@ -51,11 +51,11 @@ export default {
                     permissions
                 },
             })
-            if (location.pathname === '/login') {
-                yield put(routerRedux.push({
-                    pathname: '/layout',
-                }))
-            }
+            // if (location.pathname === '/login') {
+            //     yield put(routerRedux.push({
+            //         pathname: '/layout',
+            //     }))
+            // }
         } else if (config.openPages && config.openPages.indexOf(locationPathname) < 0) {
             yield put(routerRedux.push({
                 pathname: '/login',
