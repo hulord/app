@@ -54,18 +54,7 @@ const menuGlobal=[
         icon:'login',
         path: '/login',
         component: () => import('../index/components/login'),
-    },
-    {
-        id:'adminlogin',
-        pid:'4',
-        name:'登录',
-        icon:'login',
-        path: '/admin/login',
-        component: () => import('../admin/routes/User/Login'),
     }
-
-
-
   ];
   
 export default {

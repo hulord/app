@@ -1,5 +1,6 @@
 import {Layout,Menu,Icon,Col,Row,Avatar,Button,Carousel} from 'antd';
 import React, { Component } from 'react';
+import { Link } from 'dva/router';
 import {connect} from 'dva'
 import 'antd/dist/antd.css';
 import './layout.less';
@@ -70,7 +71,7 @@ class SiderDemo extends Component {
                             </Row>
                           </Row>
                           <Row type="flex" justify="center">
-                            <Button type="dashed" size="small"  ghost>login out</Button>
+                            <Button type="dashed" size="small"  ghost><Link to={{pathname:"/login"}}>login</Link></Button>
                           </Row>
                         </div>
                         <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>

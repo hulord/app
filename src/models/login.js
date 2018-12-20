@@ -20,26 +20,17 @@ export default {
         * login ({
           payload,
         }, { put, call, select }) {
-          const {username,token,success} = yield call(login, payload)
-          const { permissions } = username
-          const { locationQuery } = yield select(_ => _.app)
-          if (success) {
-            // const { from } = locationQuery
-            // yield put({ type: 'app/query' })
-            // if (from && from !== '/login') {
-            //   yield put(routerRedux.push(from))
-            // } else {
-              yield put(routerRedux.push('/layout'))
-              yield put({
-                type: 'app/updateState',
-                payload: {
-                  permissions,
-                    token
-                },
-             })
-            // }
-          } else {
-            throw payload
+         
+          const data = yield call(login, payload);
+          const {success,code} = data;
+          if(success){
+            if(code=="0"){
+                const res = yield put("/app/updateState",query);
+            }else{
+              message.error(data.message);
+            }
+          }else{
+            message.error('网络错误');
           }
         },
       },

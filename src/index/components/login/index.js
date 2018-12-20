@@ -1,7 +1,7 @@
 import {Form, Icon, Input, Button, Checkbox,Row} from 'antd';
 import React, { Component } from 'react';
 import {connect} from 'dva'
-import '../../index.less';
+import './index.less';
 const FormItem = Form.Item;
 
 
@@ -20,11 +20,12 @@ class login extends Component {
         }
       });
     }
-  
+    
+
     render() {
         const { getFieldDecorator } = this.props.form;
         return (
-          <Row>
+          <Row className="login-box" type="flex" justify="center" align="middle">
                 <Form onSubmit={this.handleSubmit} className="login-form">
                 <FormItem>
                   {getFieldDecorator('username', {
