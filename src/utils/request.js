@@ -63,7 +63,7 @@ const fetch = (options) => {
         data: cloneData,
       })
     case 'post':
-      return axios.post(url, cloneData);
+      return axios.post(url, cloneData)
     case 'patch':
       return axios.patch(url, cloneData);
     default:

@@ -6,6 +6,7 @@ import queryString from 'query-string'
 
 
 const initState = Map({
+    token:'',
     locationQuery: {},
     locationPathname:'',
     user: {
@@ -50,17 +51,17 @@ export default {
                     username,
                     permissions
                 },
-            })
-            if (location.pathname === '/login') {
-                yield put(routerRedux.push({
-                    pathname: '/layout',
-                }))
-            }
+             })
+            // if (location.pathname === '/login') {
+            //     yield put(routerRedux.push({
+            //         pathname: '/layout',
+            //     }))
+            //}
         } else if (config.openPages && config.openPages.indexOf(locationPathname) < 0) {
             yield put(routerRedux.push({
                 pathname: '/login',
-                search: queryString.stringify({
-                from: locationPathname,
+                    search: queryString.stringify({
+                    from: locationPathname,
                 }),
             }))
         }
