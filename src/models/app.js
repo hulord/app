@@ -1,11 +1,11 @@
 import {Map} from 'immutable';
 import { routerRedux } from 'dva/router'
-import config from '../utils/apis'
+import {config,openPages} from '../utils/apis'
 import {query} from '../services/app'
 import queryString from 'query-string'
 
 
-const initState = Map({
+const initState = {
     token:'',
     locationQuery: {},
     locationPathname:'',
@@ -15,7 +15,7 @@ const initState = Map({
         create_time:"2018/11/12",
         phone:"13600000"
     }
-})
+}
 export default {
      
     namespace: 'app',
@@ -38,43 +38,56 @@ export default {
     
     },
     effects: {
-    * query ({
-        payload,
-    }, { call, put, select }) {
-        const { success, username } = yield call(query, payload)
-        const { locationPathname } = yield select(_ => _.app)
-        if (success && username) {
-            const { permissions } = username
-            yield put({
-                type: 'updateState',
-                payload: {
-                    username,
-                    permissions
-                },
-             })
-            // if (location.pathname === '/login') {
-            //     yield put(routerRedux.push({
-            //         pathname: '/layout',
-            //     }))
-            //}
-        } else if (config.openPages && config.openPages.indexOf(locationPathname) < 0) {
-            yield put(routerRedux.push({
-                pathname: '/login',
+        * query ({
+            payload,
+        }, { call, put, select }) {
+            const { success, username } = yield call(query, payload)
+            const { locationPathname } = yield select(_ => _.app)
+            if (success && username) {
+                //const { list } = yield call(menusService.query)
+                const { permissions } = username
+                // let menu = list
+                // if (permissions.role === EnumRoleType.ADMIN || permissions.role === EnumRoleType.DEVELOPER) {
+                //     permissions.visit = list.map(item => item.id)
+                // } else {
+                //     menu = list.filter((item) => {
+                //     const cases = [
+                //         permissions.visit.includes(item.id),
+                //         item.mpid ? permissions.visit.includes(item.mpid) || item.mpid === '-1' : true,
+                //         item.bpid ? permissions.visit.includes(item.bpid) : true,
+                //     ]
+                //     return cases.every(_ => _)
+                //     })
+                // }
+                yield put({
+                    type: 'updateState',
+                    payload: {
+                        username,
+                        permissions
+                    },
+                })
+                if (locationPathname === '/login') {
+                    yield put(routerRedux.push({
+                        pathname: '/layout',
+                    }))
+                }
+            } else if (openPages && openPages.indexOf(locationPathname) < 0) {
+                yield put(routerRedux.push({
+                    pathname: '/login',
                     search: queryString.stringify({
-                    from: locationPathname,
-                }),
-            }))
-        }
-    },
-
+                        from: locationPathname,
+                    }),
+                }))
+            }
+      },
     },
   
     reducers: {
         updateState (state, { payload }) {
             return {
-              ...state,
-              ...payload,
+                ...state,
+                ...payload,
             }
-          },
+        },
     }
   };

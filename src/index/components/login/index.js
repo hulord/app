@@ -1,67 +1,76 @@
-import {Form, Icon, Input, Button, Checkbox,Row} from 'antd';
-import React, { Component } from 'react';
-import {connect} from 'dva'
-import './index.less';
-const FormItem = Form.Item;
+import React from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'dva'
+import { Button, Row, Form, Input } from 'antd'
+import { logo,name } from '../../../utils/apis'
+import styles from './index.less'
 
+const FormItem = Form.Item
 
+const Login = ({
+  dispatch,
+  form: {
+    getFieldDecorator,
+    validateFieldsAndScroll,
+  },
+}) => {
+  function handleOk () {
+    validateFieldsAndScroll((errors, values) => {
+      if (errors) {
+        return
+      }
+      dispatch({ type: 'login/login', payload: values })
+    })
+  }
 
-class login extends Component {
-    state = {
-      collapsed: false
-    };  
+  return (
+    <div className="form">
+      <div className="logo">
+        <img alt="logo" src={logo} />
+        <span>{name}</span>
+      </div>
+      <form>
+        <FormItem hasFeedback>
+          {getFieldDecorator('username', {
+            rules: [
+              {
+                required: true,
+              },
+            ],
+          })(<Input onPressEnter={handleOk} placeholder="Username" />)}
+        </FormItem>
+        <FormItem hasFeedback>
+          {getFieldDecorator('password', {
+            rules: [
+              {
+                required: true,
+              },
+            ],
+          })(<Input type="password" onPressEnter={handleOk} placeholder="Password" />)}
+        </FormItem>
+        <Row>
+          <Button type="primary" onClick={handleOk} >
+            Sign in
+          </Button>
+          <p>
+            <span>Username：guest</span>
+            <span>Password：guest</span>
+          </p>
+        </Row>
 
+      </form>
+    </div>
+  )
+}
 
-    handleSubmit = (e) => {
-      e.preventDefault();
-      this.props.form.validateFields((err, values) => {
-        if (!err) {
-          this.props.dispatch({ type: 'login/login', payload: values })               
-        }
-      });
-    }
-    
-
-    render() {
-        const { getFieldDecorator } = this.props.form;
-        return (
-          <Row className="login-box" type="flex" justify="center" align="middle">
-                <Form onSubmit={this.handleSubmit} className="login-form">
-                <FormItem>
-                  {getFieldDecorator('username', {
-                    rules: [{ required: true, message: 'Please input your username!' }],
-                  })(
-                    <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
-                  )}
-                </FormItem>
-                <FormItem>
-                  {getFieldDecorator('password', {
-                    rules: [{ required: true, message: 'Please input your Password!' }],
-                  })(
-                    <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Password" />
-                  )}
-                </FormItem>
-                <FormItem>
-                  {getFieldDecorator('remember', {
-                    valuePropName: 'checked',
-                    initialValue: true,
-                  })(
-                    <Checkbox>Remember me</Checkbox>
-                  )}
-                  <a className="login-form-forgot" href="">Forgot password</a>
-                  <Button type="primary" htmlType="submit" className="login-form-button">
-                    Log in
-                  </Button>
-                  Or <a href="">register now!</a>
-                </FormItem>
-              </Form>
-            </Row>
-        );
-    }
+Login.propTypes = {
+  form: PropTypes.object,
+  dispatch: PropTypes.func,
 }
 
 export default connect(({
-  login
-})=>({login}))(Form.create()(login))
+  app
+})=>({app}))(Form.create()(Login))
+
 
 

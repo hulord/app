@@ -4,6 +4,7 @@ import {login} from '../services/app'
 import {routerRedux} from 'dva/router';
 
 const initState = Map({
+
 })
 
 export default {
@@ -20,17 +21,19 @@ export default {
         * login ({
           payload,
         }, { put, call, select }) {
-         
           const data = yield call(login, payload);
-          const {success,code} = data;
-          if(success){
-            if(code=="0"){
-                const res = yield put("/app/updateState",query);
-            }else{
-              message.error(data.message);
+          const { locationQuery } = yield select(_ => _.app)
+          
+          if (data.success) {
+            const { from } = locationQuery
+            yield put({ type: 'app/query' })
+            if (from && from !== '/login') {
+              yield put(routerRedux.push(from))
+            } else {
+              yield put(routerRedux.push('/dashboard'))
             }
-          }else{
-            message.error('网络错误');
+          } else {
+            throw data
           }
         },
       },
