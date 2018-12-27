@@ -13,7 +13,7 @@ const menuGlobal=[
         name:'首页',
         icon:'user',
         path: '/',
-        component: () => import('../index/components/layout/Header'),
+        component: () => import('../layouts'),
     },
     {
         id:'layout',
