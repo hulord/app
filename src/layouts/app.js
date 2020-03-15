@@ -13,77 +13,15 @@ import { withRouter } from 'dva/router'
 import Error from '../pages/404'
 import '../themes/index.less'
 import './app.less'
-console.log(config)
-const { prefix } = config
+
 
 let lastHref
 
 const App = ({
   children, dispatch, app, loading, location,
 }) => {
-  const {
-    user, siderFold, darkTheme, isNavbar, menuPopoverVisible, navOpenKeys, menu, permissions,
-  } = app
-  let { pathname } = location
-  pathname = pathname.startsWith('/') ? pathname : `/${pathname}`
-  const { iconFontJS, iconFontCSS, logo } = config
-  const current = menu.filter(item => pathToRegexp(item.route || '').exec(pathname))
-  const hasPermission = current.length ? permissions.visit.includes(current[0].id) : false
-  const { href } = window.location
-
-  if (lastHref !== href) {
-    NProgress.start()
-    if (!loading.global) {
-      NProgress.done()
-      lastHref = href
-    }
-  }
-
-  const headerProps = {
-    menu,
-    user,
-    location,
-    siderFold,
-    isNavbar,
-    menuPopoverVisible,
-    navOpenKeys,
-    switchMenuPopover () {
-      dispatch({ type: 'app/switchMenuPopver' })
-    },
-    logout () {
-      dispatch({ type: 'app/logout' })
-    },
-    switchSider () {
-      dispatch({ type: 'app/switchSider' })
-    },
-    changeOpenKeys (openKeys) {
-      dispatch({ type: 'app/handleNavOpenKeys', payload: { navOpenKeys: openKeys } })
-    },
-  }
-
-  const siderProps = {
-    menu,
-    location,
-    siderFold,
-    darkTheme,
-    navOpenKeys,
-    changeTheme () {
-      dispatch({ type: 'app/switchTheme' })
-    },
-    changeOpenKeys (openKeys) {
-      window.localStorage.setItem(`${prefix}navOpenKeys`, JSON.stringify(openKeys))
-      dispatch({ type: 'app/handleNavOpenKeys', payload: { navOpenKeys: openKeys } })
-    },
-  }
-
-  const breadProps = {
-    menu,
-    location,
-  }
-
-
     return (<div>
-      <Loader fullScreen spinning={loading.effects['app/query']} />
+      11
       {children}
     </div>)
 

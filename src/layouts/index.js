@@ -7,7 +7,7 @@ import App from './app'
 export default withRouter((props) => {
   return (
     <LocaleProvider locale={enUS}>
-      <App>
+      <App> 
         { props.children }
       </App>
     </LocaleProvider>
